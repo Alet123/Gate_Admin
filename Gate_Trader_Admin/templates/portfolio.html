@@ -1,0 +1,594 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="GATE_Future_Labs,Vr_trading,algo_trading_brainwave,vr_reality,value_innovation">
+	<meta name="author" content="">
+	<meta name="robots" content="">
+	<meta name="description" content="GATE Trader  Website">
+	<meta property="og:title" content="GATE Trader  Website">
+	<meta property="og:description" content="GATE Trader  Website">
+	<meta property="og:image" content="https://gatefuturelabs.com">
+	<meta name="format-detection" content="telephone=no">
+    <title>Gate Trader Admin</title>
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" href="{% static 'images/favicon11.png' %}">
+	<link href="{% static './vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}" rel="stylesheet">
+    <link href="{% static './css/style.css' %}" rel="stylesheet">
+
+	<!-- Chartist -->
+    <link rel="stylesheet" href="{% static './vendor/chartist/css/chartist.min.css' %}">
+	<link href="{% static './vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}" rel="stylesheet">
+    <link class="main-css" href="{% static './css/style.css' %}" rel="stylesheet">
+
+
+<!-- Global CSS -->
+    <link href="{% static './vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}" rel="stylesheet">
+<!-- End Global CSS -->
+
+<!-- Page Level CSS -->
+	<link rel="stylesheet" href="{% static './vendor/chartist/css/chartist.min.css' %}">
+	<link href="{% static './vendor/owl-carousel/owl.carousel.css' %}" rel="stylesheet">
+<!-- End Page Level CSS -->
+
+<!-- Bottom CSS -->
+    <link href="{% static './css/style.css' %}" rel="stylesheet">
+<!-- End Bottom CSS CSS -->
+
+
+</head>
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="{% url 'home' %}" class="brand-logo">
+                <img src="{% static 'images/trader13.png' %}" style="width:180px;height:70px;">
+            </a>
+
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+
+
+           <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+
+                        </div>
+                        <ul class="navbar-nav header-right main-notification">
+							<li class="nav-item dropdown notification_dropdown">
+                                <a class="nav-link bell dz-theme-mode" href="javascript:void(0);">
+									<i id="icon-light" class="fas fa-sun"></i>
+                                    <i id="icon-dark" class="fas fa-moon"></i>
+
+                                </a>
+							</li>
+							<li class="nav-item dropdown notification_dropdown">
+                                <a class="nav-link bell dz-fullscreen" href="javascript:void(0);">
+                                    <svg id="icon-full" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" style="stroke-dasharray: 37, 57; stroke-dashoffset: 0;"></path></svg>
+                                    <svg id="icon-minimize" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minimize"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" style="stroke-dasharray: 37, 57; stroke-dashoffset: 0;"></path></svg>
+                                </a>
+							</li>
+                        </ul>
+                    </div>
+                </nav>
+				<div class="sub-header">
+					<div class="d-flex align-items-center flex-wrap me-auto">
+						<h5 class="dashboard_bar">Dashboard</h5>
+					</div>
+					<div class="d-flex align-items-center">
+						<a href="javascript:void(0);" class="btn btn-xs btn-primary light me-1">Today</a>
+						<a href="javascript:void(0);" class="btn btn-xs btn-primary light me-1">Month</a>
+						<a href="javascript:void(0);" class="btn btn-xs btn-primary light">Year</a>
+					</div>
+				</div>
+			</div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+          <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="deznav">
+            <div class="deznav-scroll">
+				<div class="main-profile">
+					<div class="image-bx">
+						<img src="images/Untitled-1.jpg" alt="">
+						<a href="javascript:void(0);"><i class="fa fa-cog" aria-hidden="true"></i></a>
+					</div>
+					<h5 class="name"><span class="font-w400">Hello,</span> Marquez</h5>
+					<p class="email">marquezzzz@mail.com</p>
+				</div>
+				<ul class="metismenu" id="menu">
+					<li class="nav-label first">Main Menu</li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-144-layout"></i>
+							<span class="nav-text">Trading</span>
+						</a>
+                        <ul aria-expanded="false">
+							<li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+						</ul>
+
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+						<i class="flaticon-077-menu-1"></i>
+							<span class="nav-text">Settings</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{% url 'trading_accounts' %}">Trading Accounts</a></li>
+							<li><a href="{% url 'group_accounts' %}">Group Accounts</a></li>
+							<li><a href="{% url 'master_accounts' %}">Master Accounts</a></li>
+							<li><a href="{% url 'api' %}">API Key</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-061-puzzle"></i>
+							<span class="nav-text">Live Trade</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{% url 'trade_graph' %}">Trade Graph</a></li>
+                        </ul>
+                    </li>
+					<li class="nav-label">components</li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-003-diamond"></i>
+							<span class="nav-text">Bootstrap</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="./ui-accordion.html">Accordion</a></li>
+                            <li><a href="./ui-alert.html">Alert</a></li>
+                            <li><a href="./ui-badge.html">Badge</a></li>
+                            <li><a href="./ui-button.html">Button</a></li>
+                            <li><a href="./ui-modal.html">Modal</a></li>
+                            <li><a href="./ui-button-group.html">Button Group</a></li>
+                            <li><a href="./ui-list-group.html">List Group</a></li>
+                            <li><a href="./ui-media-object.html">Media Object</a></li>
+                            <li><a href="./ui-card.html">Cards</a></li>
+                            <li><a href="./ui-carousel.html">Carousel</a></li>
+                            <li><a href="./ui-dropdown.html">Dropdown</a></li>
+                            <li><a href="./ui-popover.html">Popover</a></li>
+                            <li><a href="./ui-progressbar.html">Progressbar</a></li>
+                            <li><a href="./ui-tab.html">Tab</a></li>
+                            <li><a href="./ui-typography.html">Typography</a></li>
+                            <li><a href="./ui-pagination.html">Pagination</a></li>
+                            <li><a href="./ui-grid.html">Grid</a></li>
+
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-053-heart"></i>
+							<span class="nav-text">Plugins</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="./uc-select2.html">Select 2</a></li>
+                            <li><a href="./uc-nestable.html">Nestedable</a></li>
+                            <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
+                            <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
+                            <li><a href="./uc-toastr.html">Toastr</a></li>
+                            <li><a href="./map-jqvmap.html">Jqv Map</a></li>
+							<li><a href="./uc-lightgallery.html">Light Gallery</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-044-file"></i>
+							<span class="nav-text">Forms</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="./form-element.html">Form Elements</a></li>
+                            <li><a href="./form-wizard.html">Wizard</a></li>
+                            <li><a href="./form-editor-summernote.html">Summernote</a></li>
+                            <li><a href="form-pickers.html">Pickers</a></li>
+                            <li><a href="form-validation-jquery.html">Jquery Validate</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-381-network"></i>
+							<span class="nav-text">Table</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="table-bootstrap-basic.html">Bootstrap</a></li>
+                            <li><a href="table-datatable-basic.html">Datatable</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+							<i class="flaticon-049-copy"></i>
+							<span class="nav-text">Pages</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="./page-register.html">Register</a></li>
+                            <li><a href="./page-login.html">Login</a></li>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="./page-error-400.html">Error 400</a></li>
+                                    <li><a href="./page-error-403.html">Error 403</a></li>
+                                    <li><a href="./page-error-404.html">Error 404</a></li>
+                                    <li><a href="./page-error-500.html">Error 500</a></li>
+                                    <li><a href="./page-error-503.html">Error 503</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./page-lock-screen.html">Lock Screen</a></li>
+                        </ul>
+                    </li>
+                </ul>
+			</div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+
+
+
+ <!--**********************************
+            Content body start
+        ***********************************-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Level Summary</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Center align the buttons */
+        .button-container {
+            text-align: center;
+            margin-bottom: 10px; /* Add margin to separate from the table */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="button-container">
+                <select id="accountSelect" style="padding: 10px; font-size: 16px;">
+                    <option selected disabled>Select Account</option>
+                    <option value="account1">Account 1</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <button style="background-color: #01a9ac; color: white; padding: 10px 20px; font-size: 16px; margin-left: 10px;" onclick="refreshData()">Refresh</button>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 style="font-size: 16px; color: #01a9ac;" class="card-title">Account Level Summary</h4>
+                </div>
+                <br>
+                <div>
+                    <button style="background-color: #404e67; margin-left:2%; color: white; padding: 10px 20px; font-size: 16px;" onclick="exportTableToCSV('table1.csv')">CSV</button>
+                    <button style="background-color: #404e67; color: white; padding: 10px 20px; font-size: 16px;" onclick="exportTableToExcel('table1.xlsx')">Excel</button>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Account</th>
+                                    <th colspan="6" style="background-color: #FFF9C4">Position [NET]</th>
+                                    <th colspan="6" style="background-color: #F0FFFF">Position [DAY]</th>
+                                    <th colspan="3" style="background-color: #E6E6FA">Margin</th>
+                                    <th colspan="6" style="background-color: #FDF5E6">Orders</th>
+                                </tr>
+                                <tr>
+                                    <th>Pseudo Acc</th>
+                                    <th>Trading Acc</th>
+                                    <th style="background-color: #FFF9C4">M2M</th>
+                                    <th style="background-color: #FFF9C4">PnL</th>
+                                    <th style="background-color: #FFF9C4">AT PnL</th>
+                                    <th style="background-color: #FFF9C4">#Total</th>
+                                    <th style="background-color: #FFF9C4">#Open</th>
+                                    <th style="background-color: #FFF9C4">#Closed</th>
+                                    <th style="background-color: #F0FFFF">M2M</th>
+                                    <th style="background-color: #F0FFFF">PnL</th>
+                                    <th style="background-color: #F0FFFF">AT PnL</th>
+                                    <th style="background-color: #F0FFFF">#Total</th>
+                                    <th style="background-color: #F0FFFF">#Open</th>
+                                    <th style="background-color: #F0FFFF">#Closed</th>
+                                    <th style="background-color: #E6E6FA">Total</th>
+                                    <th style="background-color: #E6E6FA">Utilized</th>
+                                    <th style="background-color: #E6E6FA">Available</th>
+                                    <th style="background-color: #FDF5E6">#Total</th>
+                                    <th style="background-color: #FDF5E6">#Open</th>
+                                    <th style="background-color: #FDF5E6">#T-Pend</th>
+                                    <th style="background-color: #FDF5E6">#Complete</th>
+                                    <th style="background-color: #FDF5E6">#Rejected</th>
+                                    <th style="background-color: #FDF5E6">#Cancelled</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="24" style="background-color: #E0E0E0">No data available in table</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="background-color: #FFF9C4">₹0.00</td>
+                                    <td style="background-color: #FFF9C4">₹0.00</td>
+                                    <td style="background-color: #FFF9C4">₹0.00</td>
+                                    <td style="background-color: #FFF9C4">0</td>
+                                    <td style="background-color: #FFF9C4">0</td>
+                                    <td style="background-color: #FFF9C4">0</td>
+                                    <td style="background-color: #F0FFFF">₹0.00</td>
+                                    <td style="background-color: #F0FFFF">₹0.00</td>
+                                    <td style="background-color: #F0FFFF">₹0.00</td>
+                                    <td style="background-color: #F0FFFF">0</td>
+                                    <td style="background-color: #F0FFFF">0</td>
+                                    <td style="background-color: #F0FFFF">0</td>
+                                    <td style="background-color: #E6E6FA">₹0.00</td>
+                                    <td style="background-color: #E6E6FA">₹0.00</td>
+                                    <td style="background-color: #E6E6FA">₹0.00</td>
+                                    <td style="background-color: #FDF5E6">0</td>
+                                    <td style="background-color: #FDF5E6">0</td>
+                                    <td style="background-color: #FDF5E6">0</td>
+                                    <td style="background-color: #FDF5E6">0</td>
+                                    <td style="background-color: #FDF5E6">0</td>
+                                    <td style="background-color: #FDF5E6">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Second Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 style="font-size: 16px; color: #01a9ac;" class="card-title">Account Level Summary</h4>
+                </div>
+                <br>
+                <div>
+                    <button style="background-color: #404e67; margin-left:2%; color: white; padding: 10px 20px; font-size: 16px;" onclick="exportTableToCSV('table2.csv')">CSV</button>
+                    <button style="background-color: #404e67; color: white; padding: 10px 20px; font-size: 16px;" onclick="exportTableToExcel('table2.xlsx')">Excel</button>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Instrument</th>
+                                    <th colspan="11" style="background-color: #FFF9C4">Position [NET]</th>
+                                    <th colspan="11" style="background-color: #F0FFFF">Position [DAY]</th>
+                                </tr>
+                                <tr>
+                                    <th>Exchange</th>
+                                    <th>Symbol Acc</th>
+
+                                    <th style="background-color: #FFF9C4">Buy Qt</th>
+                                    <th style="background-color: #FFF9C4">Sell Qty</th>
+                                    <th style="background-color: #FFF9C4">Net Qty</th>
+                                    <th style="background-color: #FFF9C4">M2M</th>
+                                    <th style="background-color: #FFF9C4">PnL</th>
+                                    <th style="background-color: #FFF9C4">AT PnL</th>
+                                    <th style="background-color: #FFF9C4">Buy Val</th>
+                                    <th style="background-color: #FFF9C4">Sell Val</th>
+                                    <th style="background-color: #FFF9C4">Net Val</th>
+                                    <th style="background-color: #FFF9C4">Buy Avg</th>
+                                    <th style="background-color: #FFF9C4">Sell Avg</th>
+
+                                    <th style="background-color: #F0FFFF">Buy Qty</th>
+                                    <th style="background-color: #F0FFFF">Sell Qty</th>
+                                    <th style="background-color: #F0FFFF">Net Qty</th>
+                                    <th style="background-color: #F0FFFF">M2M</th>
+                                    <th style="background-color: #F0FFFF">PnL</th>
+                                    <th style="background-color: #F0FFFF">AT PnL</th>
+                                    <th style="background-color: #F0FFFF">Buy Val</th>
+                                    <th style="background-color: #F0FFFF">Sell Val</th>
+                                    <th style="background-color: #F0FFFF">Net Val</th>
+                                    <th style="background-color: #F0FFFF">Buy Avg</th>
+                                    <th style="background-color: #F0FFFF">Buy Avg</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="24" style="background-color: #E0E0E0">No data available in table</td>
+                                </tr>
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td style="background-color: #FFF9C4">₹0.00</td>
+                                    <td style="background-color: #FFF9C4">₹0.00</td>
+                                    <td style="background-color: #FFF9C4">₹0.00</td>
+                                    <td style="background-color: #FFF9C4">₹0.00</td>
+                                    <td style="background-color: #FFF9C4">₹0.00</td>
+                                    <td style="background-color: #FFF9C4">₹0.00</td>
+                                    <td style="background-color: #FFF9C4">0</td>
+                                    <td style="background-color: #FFF9C4">0</td>
+                                    <td style="background-color: #FFF9C4">0</td>
+                                    <td style="background-color: #FFF9C4"></td>
+                                    <td style="background-color: #FFF9C4"></td>
+
+                                    <td style="background-color: #F0FFFF">0</td>
+                                    <td style="background-color: #F0FFFF">0</td>
+                                    <td style="background-color: #F0FFFF">0</td>
+                                    <td style="background-color: #F0FFFF">₹0.00</td>
+                                    <td style="background-color: #F0FFFF">₹0.00</td>
+                                    <td style="background-color: #F0FFFF">₹0.00</td>
+                                    <td style="background-color: #F0FFFF">₹0.00</td>
+                                    <td style="background-color: #F0FFFF">₹0.00</td>
+                                    <td style="background-color: #F0FFFF">₹0.00</td>
+                                    <td style="background-color: #F0FFFF"></td>
+                                    <td style="background-color: #F0FFFF"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script>
+    function exportTableToCSV(filename) {
+        var csv = [];
+        var rows = document.querySelectorAll('table tr');
+        for (var i = 0; i < rows.length; i++) {
+            var row = [],
+                cols = rows[i].querySelectorAll('td, th');
+            for (var j = 0; j < cols.length; j++)
+                row.push(cols[j].innerText);
+            csv.push(row.join(','));
+        }
+        // Download CSV file
+        downloadFile(csv.join('\n'), filename, 'text/csv');
+    }
+
+    function exportTableToExcel(filename) {
+        var table = document.querySelector('table');
+        var ws = XLSX.utils.table_to_sheet(table);
+        var wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+        // Download Excel file
+        var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+        saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), filename);
+    }
+
+    function downloadFile(data, filename, type) {
+        var blob = new Blob([data], { type: type });
+        if (window.navigator.msSaveOrOpenBlob) {
+            window.navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+            var a = document.createElement('a');
+            var url = URL.createObjectURL(blob);
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            setTimeout(function() {
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }, 0);
+        }
+    }
+
+    function s2ab(s) {
+        var buf = new ArrayBuffer(s.length);
+        var view = new Uint8Array(buf);
+        for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+        return buf;
+    }
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p style="margin-right:30%;">Copyright © Designed &amp; Developed by <a href="https://gatefuturelabs.com/" target="_blank">GateFutureLabs</a> 2023</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+     </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+	<script src="{% static './vendor/global/global.min.js' %}"></script>
+
+	<script src="{% static './vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+
+	<script src="{% static './vendor/chart.js/Chart.bundle.min.js' %}"></script>
+	<!-- Chart piety plugin files -->
+    <script src="{% static './vendor/peity/jquery.peity.min.js' %}"></script>
+
+	<!-- Apex Chart -->
+	<script src="{% static './vendor/apexchart/apexchart.js' %}"></script>
+
+	<!-- Dashboard 1 -->
+	<script src="{% static './js/dashboard/dashboard-1.js' %}"></script>
+	<script src="{% static './vendor/owl-carousel/owl.carousel.js' %}"></script>
+
+	<script src="{% static './js/custom.js' %}"></script>
+	<script src="{% static './js/deznav-init.js' %}"></script>
+
+
+
+</body>
+</html>

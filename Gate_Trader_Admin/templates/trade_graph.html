@@ -1,0 +1,511 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="GATE_Future_Labs,Vr_trading,algo_trading_brainwave,vr_reality,value_innovation">
+	<meta name="author" content="">
+	<meta name="robots" content="">
+	<meta name="description" content="GATE Trader  Website">
+	<meta property="og:title" content="GATE Trader  Website">
+	<meta property="og:description" content="GATE Trader  Website">
+	<meta property="og:image" content="https://gatefuturelabs.com">
+	<meta name="format-detection" content="telephone=no">
+    <title>Gate Trader</title>
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" href="{% static 'images/favicon11.png' %}">
+	<link href="{% static './vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}" rel="stylesheet">
+    <link href="{% static './css/style.css' %}" rel="stylesheet">
+<!-- Global CSS -->
+    <link href="{% static './vendor/bootstrap-select/dist/css/bootstrap-select.min.css' %}" rel="stylesheet">
+<!-- End Global CSS -->
+
+<!-- Page Level CSS -->
+	<link rel="stylesheet" href="{% static './vendor/chartist/css/chartist.min.css' %}">
+	<link href="{% static './vendor/owl-carousel/owl.carousel.css' %}" rel="stylesheet">
+<!-- End Page Level CSS -->
+
+<!-- Bottom CSS -->
+    <link href="{% static './css/style.css' %}" rel="stylesheet">
+<!-- End Bottom CSS CSS -->
+
+
+</head>
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+<!--**********************************
+            Content body start
+ ***********************************-->
+    <br>
+<div class="row">
+    <div style="margin-left:-8%;" class="col-xl-8 col-lg-6">
+        <!-- TradingView Widget -->
+        <div class="tradingview-widget-container">
+            <div id="tradingview_caa5c"></div>
+            <div class="tradingview-widget-copyright">
+                <a href="https://in.tradingview.com/" rel="noopener nofollow" target="_blank">
+                    <span class="blue-text"></span>
+                </a>
+            </div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+            <script type="text/javascript">
+                new TradingView.widget({
+                    "width": 600, // Adjusted width
+                    "height": 410,
+                    "symbol": "NASDAQ:AAPL",
+                    "interval": "5",
+                    "timezone": "Asia/Kolkata",
+                    "theme": "light",
+                    "style": "1",
+                    "locale": "in",
+                    "enable_publishing": false,
+                    "backgroundColor": "rgba(242, 242, 242, 1)",
+                    "gridColor": "rgba(0, 0, 0, 0.06)",
+                    "container_id": "tradingview_caa5c"
+                });
+            </script>
+        </div>
+    </div>
+
+    <div style="margin-left:-19%;" class="col-xl-4 col-lg-6">
+    <div class="">
+
+        <style>
+            .chart {
+                width: 130px;
+                margin: 50px auto;
+                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                box-sizing: border-box;
+                position: relative;
+            }
+            .bar {
+                display: inline-block;
+                width: 30px; /* Adjusted width of the bars */
+                margin-right: 12px; /* Adjusted margin between bars */
+                transition: height 0.3s ease-in-out;
+                position: relative;
+            }
+            .bar1 {
+                background-color: red;
+            }
+            .bar2 {
+                background-color: green;
+            }
+            .data-label {
+                position: absolute;
+                bottom: -20px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                font-size: 12px;
+            }
+            .y-axis-label {
+                position: absolute;
+                left: -40px; /* adjust positioning */
+                top: 50%; /* align with the middle of the chart */
+                transform: translateY(-50%); /* vertically center */
+                text-align: right; /* align text to the right */
+            }
+            .x-axis-label {
+                text-align: center;
+                margin-top: 10px;
+            }
+        </style>
+
+        <div class="chart">
+            <div class="bar bar1" style="height: 150px;"></div>
+            <div class="bar bar2" style="height: 180px;"></div>
+            <div class="data-label">150</div>
+            <div class="data-label">180</div>
+            <div class="y-axis-label">180</div> <!-- Update y-axis label -->
+            <div class="x-axis-label">Category 1</div>
+        </div>
+    </div>
+</div>
+
+
+    <div style="margin-left:-10%;" class="col-xl-4 col-lg-6">
+    <!-- Line chart with tooltips -->
+    <div class=""><br>
+        <div class="card-header">
+            <h4 class="card-title"></h4>
+        </div>
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script>
+    const xValues = [100,200,300,400,500,600,700,800,900,1000];
+
+    new Chart("myChart", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+                data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+                borderColor: "red",
+                fill: false
+            }, {
+                data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+                borderColor: "green",
+                fill: false
+            }]
+        },
+        options: {
+            legend: {display: false}
+        }
+    });
+</script>
+
+<br>
+<hr><br>
+<hr>
+
+    <div class="row">
+    <div style="margin-left:-8%;" class="col-xl-8 col-lg-6">
+
+
+    </div>
+
+    <div style="margin-left:-19%;" class="col-xl-4 col-lg-6">
+    <div class="">
+
+        <style>
+            .chart {
+                width: 130px;
+                margin: 50px auto;
+                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                box-sizing: border-box;
+                position: relative;
+            }
+            .bar {
+                display: inline-block;
+                width: 30px; /* Adjusted width of the bars */
+                margin-right: 12px; /* Adjusted margin between bars */
+                transition: height 0.3s ease-in-out;
+                position: relative;
+            }
+            .bar1 {
+                background-color: red;
+            }
+            .bar2 {
+                background-color: green;
+            }
+            .data-label {
+                position: absolute;
+                bottom: -20px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                font-size: 12px;
+            }
+            .y-axis-label {
+                position: absolute;
+                left: -40px; /* adjust positioning */
+                top: 50%; /* align with the middle of the chart */
+                transform: translateY(-50%); /* vertically center */
+                text-align: right; /* align text to the right */
+            }
+            .x-axis-label {
+                text-align: center;
+                margin-top: 10px;
+            }
+        </style>
+
+        <div class="chart">
+            <div class="bar bar1" style="height: 150px;"></div>
+            <div class="bar bar2" style="height: 180px;"></div>
+            <div class="data-label">150</div>
+            <div class="data-label">180</div>
+            <div class="y-axis-label">180</div> <!-- Update y-axis label -->
+            <div class="x-axis-label">Category 1</div>
+        </div>
+    </div>
+</div>
+
+
+   <div style="margin-left:-10%;" class="col-xl-4 col-lg-6">
+    <!-- Line chart with tooltips -->
+    <div class=""><br>
+        <div class="card-header">
+            <h4 class="card-title"></h4>
+        </div>
+        <canvas id="myChart2" style="width:100%;max-width:600px"></canvas>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script>
+    const xValues2 = [100,200,300,400,500,600,700,800,900,1000];
+
+    new Chart("myChart2", {
+        type: "line",
+        data: {
+            labels: xValues2,
+            datasets: [{
+                data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+                borderColor: "red",
+                fill: false
+            }, {
+                data: [1600,1700,1700,1900,2000,2700,4000,5000,6000,7000],
+                borderColor: "green",
+                fill: false
+            }]
+        },
+        options: {
+            legend: {display: false},
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            }
+        }
+    });
+</script>
+
+        <br>
+<hr><br>
+<hr>
+
+    <div class="row">
+    <div style="margin-left:-8%;" class="col-xl-8 col-lg-6">
+
+
+    </div>
+
+    <div style="margin-left:-19%;" class="col-xl-4 col-lg-6">
+    <div class="">
+
+        <style>
+            .chart {
+                width: 130px;
+                margin: 50px auto;
+                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                box-sizing: border-box;
+                position: relative;
+            }
+            .bar {
+                display: inline-block;
+                width: 30px; /* Adjusted width of the bars */
+                margin-right: 2px; /* Adjusted margin between bars */
+                transition: height 0.3s ease-in-out;
+                position: relative;
+            }
+            .bar1 {
+                background-color: red;
+            }
+            .bar2 {
+                background-color: green;
+            }
+            .data-label {
+                position: absolute;
+                bottom: -20px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                font-size: 12px;
+            }
+            .y-axis-label {
+                position: absolute;
+                left: -40px; /* adjust positioning */
+                top: 50%; /* align with the middle of the chart */
+                transform: translateY(-50%); /* vertically center */
+                text-align: right; /* align text to the right */
+            }
+            .x-axis-label {
+                text-align: center;
+                margin-top: 10px;
+            }
+        </style>
+
+        <div class="chart">
+            <div class="bar bar1" style="height: 150px;"></div>
+            <div class="bar bar2" style="height: 180px;"></div>
+            <div class="data-label">150</div>
+            <div class="data-label">180</div>
+            <div class="y-axis-label">180</div> <!-- Update y-axis label -->
+            <div class="x-axis-label">Category 1</div>
+        </div>
+    </div>
+</div>
+
+
+<div style="margin-left:-10%;" class="col-xl-4 col-lg-6">
+    <!-- Line chart with tooltips -->
+    <div class=""><br>
+        <div class="card-header">
+            <h4 class="card-title"></h4>
+        </div>
+        <canvas id="myChart3" style="width:100%;max-width:600px"></canvas>
+    </div>
+</div>
+
+<script>
+    const xValues3 = [100,200,300,400,500,600,700,800,900,1000];
+
+    new Chart("myChart3", {
+        type: "line",
+        data: {
+            labels: xValues3,
+            datasets: [{
+                data: [860,1140,1060,1060,1070,1110,1330,2210,7830,2478],
+                borderColor: "red",
+                fill: false
+            }, {
+                data: [2000,2100,2100,2300,2400,3100,4400,5500,6500,7500],
+                borderColor: "green",
+                fill: false
+            }]
+        },
+        options: {
+            legend: {display: false},
+            tooltips: {
+                mode: 'index',
+                intersect: false
+            }
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--**********************************
+            Content body end
+   ***********************************-->
+
+
+<!--**********************************
+            Footer start
+        ***********************************-->
+	<div class="footer">
+            <div class="copyright">
+                <p style="margin-right:30%;">Copyright © Designed &amp; Developed by <a href="https://gatefuturelabs.com/" target="_blank">GateFutureLabs</a> 2024</p>
+            </div>
+        </div>
+
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+ <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+	<script src="{% static './vendor/global/global.min.js' %}"></script>
+
+	<script src="{% static './vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+
+	<script src="{% static './vendor/chart.js/Chart.bundle.min.js' %}"></script>
+	<!-- Chart piety plugin files -->
+    <script src="{% static './vendor/peity/jquery.peity.min.js' %}"></script>
+
+	<!-- Apex Chart -->
+	<script src="{% static './vendor/apexchart/apexchart.js' %}"></script>
+
+	<!-- Dashboard 1 -->
+	<script src="{% static './js/dashboard/dashboard-1.js' %}"></script>
+	<script src="{% static './vendor/owl-carousel/owl.carousel.js' %}"></script>
+
+	<script src="{% static './js/custom.js' %}"></script>
+	<script src="{% static './js/deznav-init.js' %}"></script>
+
+	<!-- Required vendors -->
+
+
+    <script src="{% static './vendor/chart.js/Chart.bundle.min.js' %}"></script>
+
+
+    <!-- Chart Chartist plugin files -->
+    <script src="{% static './vendor/chartist/js/chartist.min.js' %}"></script>
+    <script src="{% static './vendor/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js' %}"></script>
+    <script src="{% static './js/plugins-init/chartist-init.js' %}"></script>
+
+    <script src="{% static './js/custom.js' %}"></script>
+	<script src="{% static './js/deznav-init.js' %}"></script>
+
+	<!-- Chart sparkline plugin files -->
+    <script src="{% static './vendor/jquery-sparkline/jquery.sparkline.min.js' %}"></script>
+
+	<script src="{% static './js/plugins-init/sparkline-init.js' %}"></script>
+
+	 <script src="{% static './vendor/raphael/raphael.min.js' %}"></script>
+    <script src="{% static './vendor/morris/morris.min.js' %}"></script>
+    <script src="{% static './js/plugins-init/morris-init.js' %}"></script>
+
+
+<!-- Chart Morris plugin files -->
+    <script src="{% static './vendor/raphael/raphael.min.js' %}"></script>
+    <script src="{% static './vendor/morris/morris.min.js' %}"></script>
+    <script src="{% static './js/plugins-init/morris-init.js' %}"></script>
+
+    <script src="{% static './js/custom.js' %}"></script>
+	<script src="{% static './js/deznav-init.js' %}"></script>
+
+
+</body>
+</html>

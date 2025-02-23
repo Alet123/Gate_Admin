@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: left;
+            margin: 10px;
+            background-color: #f0f0f0;
+        }
+        .graph-wrapper {
+            background-color: #ffffff; /* White background for the box */
+            padding: 20px; /* Add padding inside the box */
+            border-radius: 10px; /* Optional: round corners of the box */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: add a soft shadow to the box */
+        }
+        .graph-container {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically for graphs */
+            align-items: flex-start; /* Align all graphs to the left */
+            gap: 20px;              /* Add space between the graphs */
+        }
+        .bar-graph-row {
+            display: flex;          /* Align Bar Graphs horizontally */
+            gap: 20px;              /* Space between bar graphs */
+        }
+        canvas {
+            display: block; /* Ensures that the canvas element behaves like a block-level element */
+            margin: 0 auto; /* Centers the canvas horizontally */
+        }
+        #lineGraph1, #lineGraph2, #lineGraph3 {
+            width: 310px;
+            height: 390px;
+        }
+        #barChart, #barChartHorizontal, #barChart2 {
+            width: 145px;  /* Reduced width */
+            height: 150px; /* Reduced height */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="graph-wrapper">
+        <div class="graph-container">
+            <!-- Line Graphs -->
+            <div>
+                <canvas id="lineGraph1"></canvas>
+            </div>
+            <div>
+                <canvas id="lineGraph2"></canvas>
+            </div>
+            <div>
+                <canvas id="lineGraph3"></canvas>
+            </div>
+
+            <!-- Bar Graphs -->
+            <div class="bar-graph-row">
+                <div>
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div>
+                    <canvas id="barChart2"></canvas> <!-- New bar graph -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Example time categories for the x-axis
+        const times = ['08:00 AM', '09:00 AM', '10:00 AM', '11:00 AM', '12:00 PM'];
+
+        // Data for Line Graph 1 (Nifty, Call, and Put Prices)
+        const nifty_values = [17950, 1200, 140, 800, 100];
+        const call_prices = [95, 120, 145, 175, 210];
+        const put_prices = [510, 720, 530, 340, 440];
+
+        // Data for Line Graph 2 (Adjusted Nifty Values)
+        const nifty_values_adjusted = nifty_values.map(value => value + 1000);
+
+        // Data for Line Graph 3 (Custom Dataset)
+        const custom_values = [200, 400, 300, 600, 500];  // Example for a custom dataset
+
+        // Data for Bar Graph (One time point with 3 bars)
+        const bar_values = [100, 150, 200];  // Three bars
+        const bar_labels = ['Bar 1', 'Bar 2', 'Bar 3'];  // Labels for each bar
+        const bar_colors = ['green', 'red', 'orange']; // Bar colors
+
+        // Line Graph 1
+        const ctxLine1 = document.getElementById('lineGraph1').getContext('2d');
+        const lineGraph1 = new Chart(ctxLine1, {
+            type: 'line',
+            data: {
+                labels: times,
+                datasets: [
+                    {
+                        label: 'Nifty',
+                        data: nifty_values,
+                        borderColor: 'blue',
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Call',
+                        data: call_prices,
+                        borderColor: 'green',
+                        fill: false,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Put',
+                        data: put_prices,
+                        borderColor: 'red',
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: { position: 'top' },
+                tooltips: { mode: 'index', intersect: false },
+                scales: {
+                    x: { display: true, title: { display: true, text: 'Time' } },
+                    y: { display: true, title: { display: true, text: 'Price' } }
+                }
+            }
+        });
+
+        // Line Graph 2 (Adjusted Nifty Values)
+        const ctxLine2 = document.getElementById('lineGraph2').getContext('2d');
+        const lineGraph2 = new Chart(ctxLine2, {
+            type: 'line',
+            data: {
+                labels: times,
+                datasets: [
+                    {
+                        label: 'Adjusted Nifty Value',
+                        data: nifty_values_adjusted,
+                        borderColor: 'purple',
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: { position: 'top' },
+                tooltips: { mode: 'index', intersect: false },
+                scales: {
+                    x: { display: true, title: { display: true, text: 'Time' } },
+                    y: { display: true, title: { display: true, text: 'Price' } }
+                }
+            }
+        });
+
+        // Line Graph 3 (Custom Dataset)
+        const ctxLine3 = document.getElementById('lineGraph3').getContext('2d');
+        const lineGraph3 = new Chart(ctxLine3, {
+            type: 'line',
+            data: {
+                labels: times,
+                datasets: [
+                    {
+                        label: 'Custom Values',
+                        data: custom_values,
+                        borderColor: 'orange',
+                        fill: false,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: { position: 'top' },
+                tooltips: { mode: 'index', intersect: false },
+                scales: {
+                    x: { display: true, title: { display: true, text: 'Time' } },
+                    y: { display: true, title: { display: true, text: 'Value' } }
+                }
+            }
+        });
+
+        // Vertical Bar Chart (One time point with 3 bars)
+        const ctxBar = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['08:00 AM'],  // Only one time point
+                datasets: [
+                    {
+                        label: '1',
+                        data: [bar_values[0]],  // First bar value
+                        backgroundColor: bar_colors[0],  // First bar color (green)
+                        borderColor: bar_colors[0],  // Border color green
+                        borderWidth: 1,
+                        barThickness: 5,  // Reduced bar width
+                        categoryPercentage: 0.8, // Reduces the space between bars
+                        barPercentage: 0.7, // Adjusts the width of the bars relative to the space
+                    },
+                    {
+                        label: '2',
+                        data: [bar_values[1]],  // Second bar value
+                        backgroundColor: bar_colors[1],  // Second bar color (red)
+                        borderColor: bar_colors[1],  // Border color red
+                        borderWidth: 1,
+                        barThickness: 5,  // Reduced bar width
+                        categoryPercentage: 0.8, // Reduces the space between bars
+                        barPercentage: 0.7, // Adjusts the width of the bars relative to the space
+                    },
+                    {
+                        label: '3',
+                        data: [bar_values[2]],  // Third bar value
+                        backgroundColor: bar_colors[2],  // Third bar color (orange)
+                        borderColor: bar_colors[2],  // Border color orange
+                        borderWidth: 1,
+                        barThickness: 5,  // Reduced bar width
+                        categoryPercentage: 0.8, // Reduces the space between bars
+                        barPercentage: 0.7, // Adjusts the width of the bars relative to the space
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: { position: 'top' },
+                tooltips: { mode: 'index', intersect: false },
+                scales: {
+                    x: {
+                        display: true,
+                        title: { display: true, text: 'Time' },
+                        offset: true,  // Ensures bars are grouped at the same time point
+                    },
+                    y: {
+                        display: true,
+                        title: { display: true, text: 'Value' }
+                    }
+                },
+                indexAxis: 'x',
+                maintainAspectRatio: false,
+            }
+        });
+
+        // New Bar Graph (barChart2)
+        const ctxBar2 = document.getElementById('barChart2').getContext('2d');
+        const barChart2 = new Chart(ctxBar2, {
+            type: 'bar',
+            data: {
+                labels: ['08:00 AM'],  // Only one time point
+                datasets: [
+                    {
+                        label: '1',
+                        data: [bar_values[0]],  // First bar value
+                        backgroundColor: bar_colors[0],  // First bar color (green)
+                        borderColor: bar_colors[0],  // Border color green
+                        borderWidth: 1,
+                        barThickness: 5,  // Reduced bar width
+                        categoryPercentage: 0.8, // Reduces the space between bars
+                        barPercentage: 0.7, // Adjusts the width of the bars relative to the space
+                    },
+                    {
+                        label: '2',
+                        data: [bar_values[1]],  // Second bar value
+                        backgroundColor: bar_colors[1],  // Second bar color (red)
+                        borderColor: bar_colors[1],  // Border color red
+                        borderWidth: 1,
+                        barThickness: 5,  // Reduced bar width
+                        categoryPercentage: 0.8, // Reduces the space between bars
+                        barPercentage: 0.7, // Adjusts the width of the bars relative to the space
+                    },
+                    {
+                        label: '3',
+                        data: [bar_values[2]],  // Third bar value
+                        backgroundColor: bar_colors[2],  // Third bar color (orange)
+                        borderColor: bar_colors[2],  // Border color orange
+                        borderWidth: 1,
+                        barThickness: 5,  // Reduced bar width
+                        categoryPercentage: 0.8, // Reduces the space between bars
+                        barPercentage: 0.7, // Adjusts the width of the bars relative to the space
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                legend: { position: 'top' },
+                tooltips: { mode: 'index', intersect: false },
+                scales: {
+                    x: {
+                        display: true,
+                        title: { display: true, text: 'Time' },
+                        offset: true,  // Ensures bars are grouped at the same time point
+                    },
+                    y: {
+                        display: true,
+                        title: { display: true, text: 'Value' }
+                    }
+                },
+                indexAxis: 'x',
+                maintainAspectRatio: false,
+            }
+        });
+
+    </script>
+
+</body>
+</html>
