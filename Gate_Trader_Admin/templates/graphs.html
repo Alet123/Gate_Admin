@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs</title>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Set the body background to white */
+        body {
+            background-color: white;  /* Changed from #f4f4f4 to white */
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        /* Simplified chart container with no additional background or padding */
+        .chart-container {
+            width: 100%;  /* Make chart containers full width */
+            margin-bottom: 30px;  /* Space between charts */
+        }
+
+        /* Flexbox layout for graphs */
+        .chart-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bar-charts-row {
+            display: flex;
+            flex-direction: row;  /* Stack bar charts vertically */
+            width: 20%;  /* Ensures the row spans full width */
+        }
+
+        /* Specify width and height separately for each graph */
+        #lineChart1 {
+            width: 280px !important;
+            height: 140px !important;
+        }
+
+        #lineChart2 {
+            width: 280px !important;
+            height: 140px !important;
+        }
+
+        #lineChart3 {
+            width: 280px !important;
+            height: 140px !important;
+        }
+
+        #barChart1 {
+            width: 160px !important;
+            height: 140px !important;
+        }
+
+        #barChart2 {
+            width: 170px !important;
+            height: 140px !important;
+        }
+
+        h1 {
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Mobile-friendly adjustments */
+        @media (max-width: 600px) {
+            canvas {
+                width: 250px !important;
+                height: 120px !important;
+            }
+
+            /* Reduce the spacing between the bars on small screens */
+            .bar-charts-row {
+                gap: 3px; /* Even tighter gap for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Container for both line graphs -->
+<div class="chart-row">
+    <!-- Container for Line Graph 1 -->
+    <div class="chart-container">
+        <canvas id="lineChart1"></canvas>
+    </div>
+
+    <!-- Container for Line Graph 2 -->
+    <div class="chart-container">
+        <canvas id="lineChart2"></canvas>
+    </div>
+
+    <!-- Container for Line Graph 3 -->
+    <div class="chart-container">
+        <canvas id="lineChart3"></canvas>
+    </div>
+</div>
+
+<!-- Container for Bar graphs on separate lines -->
+<div class="bar-charts-row">
+    <!-- Container for Bar Graph 1 -->
+    <div class="chart-container">
+        <canvas id="barChart1"></canvas>
+    </div>
+
+    <!-- Container for Bar Graph 2 -->
+    <div class="chart-container">
+        <canvas id="barChart2"></canvas>
+    </div>
+</div>
+
+<script>
+    // Data for Line Graph 1 (Sine, Cosine, and Tangent Waves)
+    var lineData1 = {
+        labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        datasets: [
+            {
+                label: 'Sine Wave',
+                data: [0, 0.84, 1.57, 2.30, 2.90, 3.41, 3.72, 3.87, 3.84, 3.58],
+                borderColor: 'red',
+                fill: false
+            },
+            {
+                label: 'Cosine Wave',
+                data: [1, 0.54, -0.42, -1.00, -0.99, -0.41, 0.58, 1.00, 0.99, 0.42],
+                borderColor: 'green',
+                fill: false
+            },
+            {
+                label: 'Tangent Wave',
+                data: [0, 1.57, 2.90, 9.42, 5.67, 0.45, -0.57, -0.97, -2.03, -4.59],
+                borderColor: 'blue',
+                fill: false
+            }
+        ]
+    };
+
+    // Data for Line Graph 2 (Linear and Quadratic Functions)
+    var lineData2 = {
+        labels: [0, 1, 2, 3, 4, 5],
+        datasets: [
+            {
+                label: 'Linear Function',
+                data: [0, 1, 2, 3, 4, 5],
+                borderColor: 'orange',
+                fill: false
+            },
+            {
+                label: 'Quadratic Function',
+                data: [0, 1, 4, 9, 16, 25],
+                borderColor: 'purple',
+                fill: false
+            }
+        ]
+    };
+
+    // Data for Line Graph 3 (Exponential and Logarithmic Functions)
+    var lineData3 = {
+        labels: [1, 2, 3, 4, 5, 6, 7, 8],
+        datasets: [
+            {
+                label: 'Exponential Growth',
+                data: [1, 2, 4, 8, 16, 32, 64, 128],
+                borderColor: 'pink',
+                fill: false
+            },
+            {
+                label: 'Logarithmic Growth',
+                data: [0, 0.69, 1.1, 1.39, 1.61, 1.79, 1.94, 2.08],
+                borderColor: 'cyan',
+                fill: false
+            }
+        ]
+    };
+
+    // Data for Bar Graph 1 (One category with three datasets)
+    var barData1 = {
+        labels: [''],  // Only one category "A"
+        datasets: [
+            {
+                label: 'Data Set 1 (Green)',
+                data: [12],  // Only one data point for Category A
+                backgroundColor: 'green',  // Colors for each bar
+                borderColor: 'green',
+                borderWidth: 1
+            },
+            {
+                label: 'Data Set 2 (Red)',
+                data: [7],  // Only one data point for Category A
+                backgroundColor: 'red',  // Colors for each bar
+                borderColor: 'red',
+                borderWidth: 1
+            },
+            {
+                label: 'Data Set 3 (Orange)',
+                data: [5],  // Only one data point for Category A
+                backgroundColor: 'orange',  // Colors for each bar
+                borderColor: 'orange',
+                borderWidth: 1
+            }
+        ]
+    };
+
+    // Data for Bar Graph 2 (One category with three datasets)
+    var barData2 = {
+        labels: [''],  // Only one category "A"
+        datasets: [
+            {
+                label: 'Data Set 1 (Green)',
+                data: [5],  // Only one data point for Category A
+                backgroundColor: 'green',  // Colors for each bar
+                borderColor: 'green',
+                borderWidth: 1
+            },
+            {
+                label: 'Data Set 2 (Red)',
+                data: [7],  // Only one data point for Category A
+                backgroundColor: 'red',  // Colors for each bar
+                borderColor: 'red',
+                borderWidth: 1
+            },
+            {
+                label: 'Data Set 3 (Orange)',
+                data: [9],  // Only one data point for Category A
+                backgroundColor: 'orange',  // Colors for each bar
+                borderColor: 'orange',
+                borderWidth: 1
+            }
+        ]
+    };
+
+    // Configuration for Line Chart 1
+    var lineConfig1 = {
+        type: 'line',
+        data: lineData1,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    display: false  // Remove legend
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw.toFixed(2);
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    // Configuration for Line Chart 2
+    var lineConfig2 = {
+        type: 'line',
+        data: lineData2,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    display: false  // Remove legend
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw.toFixed(2);
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    // Configuration for Line Chart 3
+    var lineConfig3 = {
+        type: 'line',
+        data: lineData3,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    display: false  // Remove legend
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': ' + tooltipItem.raw.toFixed(2);
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    // Configuration for Bar Chart 1 (Overlapping bars)
+    var barConfig1 = {
+        type: 'bar',
+        data: barData1,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false  // Remove legend
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    ticks: {
+                        maxRotation: 0,
+                        minRotation: 0
+                    }
+                }
+            },
+            barThickness: 8,  // Set the thickness of the bars
+            categoryPercentage: 0.5,  // Reduce the space between bars in each category
+            barPercentage: 0.9,  // Adjust spacing between individual bars (increases overlap)
+        }
+    };
+
+    // Configuration for Bar Chart 2 (Overlapping bars)
+    var barConfig2 = {
+        type: 'bar',
+        data: barData2,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false  // Remove legend
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+                x: {
+                    ticks: {
+                        maxRotation: 0,
+                        minRotation: 0
+                    }
+                }
+            },
+            barThickness: 8,  // Set the thickness of the bars
+            categoryPercentage: 0.5,  // Reduce the space between bars in each category
+            barPercentage: 0.9,  // Adjust spacing between individual bars (increases overlap)
+        }
+    };
+
+    // Create the Line Charts
+    var ctxLine1 = document.getElementById('lineChart1').getContext('2d');
+    new Chart(ctxLine1, lineConfig1);
+
+    var ctxLine2 = document.getElementById('lineChart2').getContext('2d');
+    new Chart(ctxLine2, lineConfig2);
+
+    var ctxLine3 = document.getElementById('lineChart3').getContext('2d');
+    new Chart(ctxLine3, lineConfig3);
+
+    // Create the Bar Charts
+    var ctxBar1 = document.getElementById('barChart1').getContext('2d');
+    new Chart(ctxBar1, barConfig1);
+
+    var ctxBar2 = document.getElementById('barChart2').getContext('2d');
+    new Chart(ctxBar2, barConfig2);
+</script>
+
+</body>
+</html>
